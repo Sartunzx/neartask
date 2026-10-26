@@ -1,0 +1,24 @@
+{
+  "id": "./",
+  "name": "NearTask – Local shifts & home services",
+  "short_name": "NearTask",
+  "description": "Local shifts and home services around Keynsham, Bristol and Bath.",
+  "lang": "en-GB",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F6F8",
+  "theme_color": "#0E7C7B",
+  "categories": ["business", "lifestyle", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Explore listings", "url": "./#/explore", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Messages", "url": "./#/inbox", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
+}
