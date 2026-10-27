@@ -1,5 +1,5 @@
 // Offline support + phone notifications.
-const CACHE = "neartask-v5";
+const CACHE = "neartask-v6";
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "./index.html", "./icon.svg", "./apple-touch-icon.png", "./icon-192.png", "./manifest.webmanifest"])).catch(() => {}));
   self.skipWaiting();
@@ -24,7 +24,7 @@ self.addEventListener("fetch", (e) => {
 self.addEventListener("push", (e) => {
   let d = {};
   try { d = e.data ? e.data.json() : {}; } catch {}
-  e.waitUntil(self.registration.showNotification(d.title || "NearTask", { body: d.body || "", icon: "icon.svg", badge: "icon.svg", data: { link: d.link || "/" } }));
+  e.waitUntil(self.registration.showNotification(d.title || "NearTask", { body: d.body || "", icon: "icon.svg", badge: "icon.svg", tag: d.id || undefined, data: { link: d.link || "/" } }));
 });
 self.addEventListener("notificationclick", (e) => {
   e.notification.close();
