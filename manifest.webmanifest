@@ -1,7 +1,7 @@
 {
   "name": "NearTask – local work and help",
   "short_name": "NearTask",
-  "description": "Local shifts and home services around Keynsham, Bristol and Bath.",
+  "description": "Find local shifts and jobs, or get help at home: cleaning, repairs, garden, moving and more around Keynsham, Bristol and Bath.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
@@ -10,9 +10,65 @@
   "background_color": "#F4F6F8",
   "theme_color": "#0E7C7B",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "lifestyle",
+    "productivity"
+  ],
+  "lang": "en-GB",
+  "dir": "ltr",
+  "screenshots": [
+    {
+      "src": "screenshots/1-home.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Home: work and help nearby"
+    },
+    {
+      "src": "screenshots/2-explore.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Find shifts and local jobs"
+    },
+    {
+      "src": "screenshots/3-listing.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Clear pay, apply in one tap"
+    },
+    {
+      "src": "screenshots/6-inbox.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Compare quotes and chat"
+    }
   ]
 }

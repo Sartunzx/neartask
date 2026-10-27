@@ -1,5 +1,5 @@
 // Offline support + phone notifications.
-const CACHE = "neartask-v6";
+const CACHE = "neartask-v7";
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "./index.html", "./icon.svg", "./apple-touch-icon.png", "./icon-192.png", "./manifest.webmanifest"])).catch(() => {}));
   self.skipWaiting();
