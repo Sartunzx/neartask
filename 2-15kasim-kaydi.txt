@@ -1,0 +1,40 @@
+
+do $$
+declare
+  app constant uuid := 'fa6daf03-c3a3-4793-bd31-01056fa05d2d';
+  actor constant uuid := '03c787a9-f276-457f-8451-aaa9e1d305cc'; -- NearTask admin profile (Artwin Ltd.)
+  r record;
+begin
+  select a.id, a.status, a.completed_at, a.completed_by, a.listing_id, l.date, l.category, l.kind
+    into r
+  from applications a join listings l on l.id = a.listing_id
+  where a.id = app
+  for update of a;
+
+  if r.id is null then raise exception 'Stopped: job not found'; end if;
+  if r.date <> date '2026-11-15' or r.category <> 'hospitality' or r.kind <> 'job' then
+    raise exception 'Stopped: not the 15 Nov 2026 Hospitality shift';
+  end if;
+  if r.status <> 'accepted' then raise exception 'Stopped: status is % (expected accepted)', r.status; end if;
+  if r.completed_at is null then raise exception 'Stopped: already not completed - nothing to do'; end if;
+  if (r.completed_at at time zone 'UTC')::date <> date '2026-10-28' then
+    raise exception 'Stopped: completed on % (expected 28 Oct 2026)', r.completed_at;
+  end if;
+  if not exists (select 1 from job_events where application_id = app and event = 'completed') then
+    raise exception 'Stopped: run v8_job_completion_fix.sql first (original completion event missing)';
+  end if;
+
+  insert into job_events (application_id, listing_id, event, actor_id, reason, prev_completed_at, prev_completed_by)
+  values (app, r.listing_id, 'completion_reverted', actor,
+          'Marked as completed on 28 Oct 2026 before the 15 Nov 2026 shift took place (pre-launch bug fix)',
+          r.completed_at, r.completed_by);
+
+  update applications set completed_at = null, completed_by = null where id = app;
+  raise notice 'Done: job % is accepted and no longer marked as completed', app;
+end $$;
+
+select a.id, a.status, a.completed_at,
+       (select json_agg(json_build_object('event', e.event, 'at', e.created_at, 'reason', e.reason) order by e.created_at)
+          from job_events e where e.application_id = a.id) as history
+from applications a where a.id = 'fa6daf03-c3a3-4793-bd31-01056fa05d2d';
+
