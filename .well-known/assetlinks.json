@@ -1,1 +1,8 @@
-
+   [{
+     "relation": ["delegate_permission/common.handle_all_urls"],
+     "target": {
+       "namespace": "android_app",
+       "package_name": "uk.co.neartask.app",
+       "sha256_cert_fingerprints": ["46:1B:A6:47:A1:D5:4D:4C:E1:B4:5E:8D:D5:CF:FA:9C:A7:99:4C:D2:EF:94:12:B1:1C:0D:40:B4:CB:21:6F:61"]
+     }
+   }]
